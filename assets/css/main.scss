@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --white-color: hsl(0, 0%, 100%);
+  --light-pink-color: hsl(275, 100%, 97%);
+  --grayish-purple-color: hsl(292, 16%, 49%);
+  --dark-purple-color: hsl(292, 42%, 14%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 375px;
+  min-height: 100vh;
+  font-size: 16px;
+  font-family: "Work Sans", sans-serif;
+  background: var(--light-pink-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: var(--dark-purple-color)
+    url(../images/background-pattern-desktop.svg) no-repeat left top / contain;
+}
+
+.faq {
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+  background: var(--white-color);
+  border-radius: 10px;
+  padding: 30px;
+  display: grid;
+  gap: 20px;
+
+  &__head {
+    display: flex;
+    gap: 20px;
+    font-weight: 700;
+    font-size: 36px;
+  }
+
+  .collapse {
+    width: 100%;
+    border-bottom: 2px solid var(--light-pink-color);
+
+    &:last-child {
+      border: none;
+    }
+
+    &__title {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
+      transition: 0.15s;
+
+      &:hover {
+        color: hsl(280.92deg 82.98% 53.92%);
+      }
+
+      .plus {
+        display: block;
+      }
+
+      .minus {
+        display: none;
+      }
+
+      &_active {
+        .plus {
+          display: none;
+        }
+
+        .minus {
+          display: block;
+        }
+      }
+    }
+
+    &__content {
+      max-height: 0;
+      overflow: hidden;
+      transition: 0.15s;
+
+      p {
+        color: var(--grayish-purple-color);
+        padding-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .faq {
+    max-width: 320px;
+
+    &__head {
+      font-size: 26px;
+    }
+  }
+
+  .faq .collapse__content p {
+    font-size: 15px;
+  }
+}
